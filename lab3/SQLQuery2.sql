@@ -1,5 +1,7 @@
 use UNIVER
 
+drop table STUDENT
+
 create table STUDENT (
 	Номер_зачетки int not null,
 	Фамилия_студента nvarchar(20) not null,

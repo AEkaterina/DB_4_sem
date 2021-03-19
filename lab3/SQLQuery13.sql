@@ -1,5 +1,5 @@
 use UNIVER
-
+drop table STUDENT
 create table STUDENT (
 	Номер_зачетки int primary key identity (1, 1),
 	ФИО nvarchar (50) not null,
