@@ -1,17 +1,17 @@
 use [02 Курсы повышения квалификации]
 
---- 1 
+
 
 select Нагрузка.Номер_группы, Группа.Специальность 
 from Нагрузка inner join Группа
 on Нагрузка.Номер_группы = Группа.Номер_группы
 
---- 2
+
 select Нагрузка.Номер_группы, Группа.Специальность 
 from Нагрузка inner join Группа
 on Нагрузка.Номер_группы = Группа.Номер_группы and Группа.Специальность like N'%ика'
 
---- 3 
+
 select Нагрузка.Номер_группы, Группа.Специальность 
 from Нагрузка, Группа
 where Нагрузка.Номер_группы = Группа.Номер_группы
@@ -20,29 +20,36 @@ select T1.Номер_группы, T2.Специальность
 from Нагрузка as T1, Группа as T2
 where T1.Номер_группы = T2.Номер_группы and T2.Специальность like N'%ика'
 
---- 6
+select Нагрузка.Номер_группы as 'Номер группы', isnull(Группа.Специальность, '***') as Специальность
+from Нагрузка left outer join Группа
+on Нагрузка.Номер_группы = Группа.Номер_группы
+
+select Нагрузка.Номер_группы as 'Номер группы', isnull(Группа.Специальность, '***') as Специальность
+from Группа right outer join Нагрузка
+on Нагрузка.Номер_группы = Группа.Номер_группы
+
+select Нагрузка.Номер_группы as 'Номер группы', isnull(Группа.Специальность, '***') as Специальность
+from Нагрузка right outer join Группа
+on Нагрузка.Номер_группы = Группа.Номер_группы
+
+select Нагрузка.Номер_группы as 'Номер группы', isnull(Группа.Специальность, '***') as Специальность
+from Нагрузка full outer join Группа
+on Нагрузка.Номер_группы = Группа.Номер_группы
+
+select Нагрузка.Номер_группы as 'Номер группы', isnull(Группа.Специальность, '***') as Специальность
+from Группа full outer join Нагрузка
+on Нагрузка.Номер_группы = Группа.Номер_группы
+
+select Нагрузка.Номер_группы as 'Номер группы', isnull(Группа.Специальность, '***') as Специальность
+from Группа cross join Нагрузка
+where Нагрузка.Номер_группы = Группа.Номер_группы
 
 
---select PULPIT.PULPIT_NAME as 'Кафедра', isnull(TEACHER.TEACHER_NAME, '***') as 'Преподаватель'
---from PULPIT left outer join TEACHER on PULPIT.PULPIT = TEACHER.PULPIT
-
------ 7
---select PULPIT.PULPIT_NAME as 'Кафедра', isnull(TEACHER.TEACHER_NAME, '***') as 'Преподаватель'
---from TEACHER left outer join PULPIT on PULPIT.PULPIT = TEACHER.PULPIT
-
---select PULPIT.PULPIT_NAME as 'Кафедра', isnull(TEACHER.TEACHER_NAME, '***') as 'Преподаватель'
---from TEACHER right outer join PULPIT on PULPIT.PULPIT = TEACHER.PULPIT
 
 
------ 8
------коммутативность
---select PULPIT.PULPIT_NAME as 'Кафедра', isnull(TEACHER.TEACHER_NAME, '***') as 'Преподаватель'
---from PULPIT full outer join TEACHER on PULPIT.PULPIT = TEACHER.PULPIT
 
---select PULPIT.PULPIT_NAME as 'Кафедра', isnull(TEACHER.TEACHER_NAME, '***') as 'Преподаватель'
---from TEACHER full outer join PULPIT on PULPIT.PULPIT = TEACHER.PULPIT
 
------ содержит inner join
+----- inner join
 --select PULPIT.PULPIT_NAME as 'Кафедра', isnull(TEACHER.TEACHER_NAME, '***') as 'Преподаватель'
 --from PULPIT inner join TEACHER on PULPIT.PULPIT = TEACHER.PULPIT
 
@@ -60,16 +67,7 @@ where T1.Номер_группы = T2.Номер_группы and T2.Специальность like N'%ика'
 --select isnull(PULPIT.PULPIT_NAME, '***') as 'Кафедра', isnull(TEACHER.TEACHER_NAME, '***') as 'Преподаватель'
 --from PULPIT full outer join TEACHER on PULPIT.PULPIT = TEACHER.PULPIT
 
------9
---select AUDITORIUM.AUDITORIUM, AUDITORIUM_TYPE.AUDITORIUM_TYPENAME
---from AUDITORIUM cross join AUDITORIUM_TYPE
---where AUDITORIUM.AUDITORIUM_TYPE = AUDITORIUM_TYPE.AUDITORIUM_TYPE
 
-
---- 4
-
-
------ 4
 
 --select FACULTY.FACULTY as 'Факультет',
 --	   PULPIT.PULPIT as 'Кафедра',
